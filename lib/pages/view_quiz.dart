@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quiz/database/db.dart';
 import 'package:flutter_quiz/database/question_item.dart';
 import 'package:flutter_quiz/database/quiz_item.dart';
+import 'package:flutter_quiz/pages/question.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ViewQuiz extends StatefulWidget{
@@ -174,7 +175,6 @@ class _ViewQuizState extends State<ViewQuiz>{
     );
   }
 
-
   void fetchQuestions() async{
     List<Map<String, dynamic>> _results = await DB.queryQuestions(QuestionItem.table, quiz);
     questions = _results.map((quiz) => QuestionItem.fromMap(quiz)).toList();
@@ -189,7 +189,7 @@ class _ViewQuizState extends State<ViewQuiz>{
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
-        gradient: LinearGradient(colors: [Colors.red[600], Colors.red[400]]),
+        gradient: LinearGradient(colors: [Colors.blue[700], Colors.blue[400]]),
         boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black12,
@@ -200,7 +200,7 @@ class _ViewQuizState extends State<ViewQuiz>{
       ),
       child: 
       Container(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(20),
         child: Column(
           children: [
             Row(
@@ -208,7 +208,7 @@ class _ViewQuizState extends State<ViewQuiz>{
               children: [
                 Text(item.question, style: GoogleFonts.montserrat(
                     color: Colors.white,
-                    fontSize: 20
+                    fontSize: 16
                   ),
                 ),  
               ],
@@ -235,11 +235,13 @@ class _ViewQuizState extends State<ViewQuiz>{
         child: Padding(
           padding: EdgeInsets.only(bottom: 10),
           child: FloatingActionButton(
-            onPressed: () {
-              
-            },
+            onPressed: () => Navigator.push(context,
+              MaterialPageRoute(
+                builder: (context) => ViewQuestions(quiz: quiz)
+              )
+            ),
             child: Icon(Icons.play_arrow, color: Colors.white),
-            backgroundColor: Colors.redAccent,
+            backgroundColor: Colors.blue[500],
           ),
         ),
       ),

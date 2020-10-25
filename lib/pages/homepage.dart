@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage>{
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(6),
-          gradient: LinearGradient(colors: [Colors.red[600], Colors.red[400]]),
+          gradient: LinearGradient(colors: [Colors.blue[700], Colors.blue[400]]),
           boxShadow: <BoxShadow>[
             BoxShadow(
               color: Colors.black12,
@@ -309,7 +309,7 @@ class _HomePageState extends State<HomePage>{
               
             },
             child: Icon(Icons.add, color: Colors.white),
-            backgroundColor: Colors.redAccent,
+            backgroundColor: Colors.blue[500],
           ),
         ),
       ),
