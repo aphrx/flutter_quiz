@@ -10,7 +10,7 @@ abstract class DB{
   static Future<void> init() async {
     try {
       String _path = await getDatabasesPath();
-      String _dbpath = p.join(_path, 'quiz2.db');
+      String _dbpath = p.join(_path, 'quiz3.db');
       _db = await openDatabase(_dbpath, version: _version, onCreate: _onCreate);
     }
     catch(ex){
@@ -35,4 +35,7 @@ abstract class DB{
 
   static Future<int> delete(String table, Model item) async =>
     await _db.delete(table, where: 'id = ?', whereArgs: [item.id]);
+
+  static Future<int> update(String table, Model model) async => await _db
+    .update(table, model.toMap(), where: 'id = ?', whereArgs: [model.id]);
 }

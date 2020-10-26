@@ -44,15 +44,20 @@ class _ViewQuizState extends State<ViewQuiz>{
       wrongAnswerC: info[4] 
     );
     DB.insert(QuestionItem.table, q);
+    quiz.questionNo += 1;
+    DB.update(QuizItem.table, quiz);
     fetchQuestions();
   }
 
   void _createDialog(BuildContext context){
     List _questionInfo = ["", "", "", "", ""];
     var question = TextField(
+      decoration: InputDecoration(
+        labelText: "Question"
+      ),
       style: GoogleFonts.montserrat(
         color: Color.fromRGBO(105, 105, 108, 1),
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: FontWeight.normal
       ),
       onChanged: (value) {
@@ -60,9 +65,12 @@ class _ViewQuizState extends State<ViewQuiz>{
       }
     );
     var cAnswer = TextField(
+      decoration: InputDecoration(
+        labelText: "Correct Answer"
+      ),
       style: GoogleFonts.montserrat(
         color: Color.fromRGBO(105, 105, 108, 1),
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: FontWeight.normal
       ),
       onChanged: (value) {
@@ -70,9 +78,12 @@ class _ViewQuizState extends State<ViewQuiz>{
       }
     );
     var wAnswer1 = TextField(
+      decoration: InputDecoration(
+        labelText: "Wrong Answer 1"
+      ),
       style: GoogleFonts.montserrat(
         color: Color.fromRGBO(105, 105, 108, 1),
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: FontWeight.normal
       ),
       onChanged: (value) {
@@ -80,19 +91,25 @@ class _ViewQuizState extends State<ViewQuiz>{
       }
     );
     var wAnswer2 = TextField(
+      decoration: InputDecoration(
+        labelText: "Wrong Answer 2"
+      ),
       style: GoogleFonts.montserrat(
         color: Color.fromRGBO(105, 105, 108, 1),
-        fontSize: 18,
-        fontWeight: FontWeight.normal
+        fontSize: 14,
+        fontWeight: FontWeight.normal 
       ),
       onChanged: (value) {
         _questionInfo[3] = value;
       }
     );
     var wAnswer3 = TextField(
+      decoration: InputDecoration(
+        labelText: "Wrong Answer 3"
+      ),
       style: GoogleFonts.montserrat(
         color: Color.fromRGBO(105, 105, 108, 1),
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: FontWeight.normal
       ),
       onChanged: (value) {
@@ -148,7 +165,7 @@ class _ViewQuizState extends State<ViewQuiz>{
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(height: 16),
+                  SizedBox(height: 10),
                   Text("Add Quiz", style: GoogleFonts.montserrat(
                     color: Color.fromRGBO(59, 57, 60, 1),
                     fontSize: 18, 
@@ -185,7 +202,7 @@ class _ViewQuizState extends State<ViewQuiz>{
     return Container(
       margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
       width: double.infinity,
-      height: 60,
+      height: 65,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
@@ -218,7 +235,6 @@ class _ViewQuizState extends State<ViewQuiz>{
       )
     );
   }
-
 
   @override
   Widget build(BuildContext context) {

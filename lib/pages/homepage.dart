@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage>{
             MaterialPageRoute(
               builder: (context) => ViewQuiz(quiz: item)
             )
-          )
+          ).then((value) => fetchQuiz())
         )
       ),
       confirmDismiss: (DismissDirection direction) async {
@@ -127,6 +127,9 @@ class _HomePageState extends State<HomePage>{
     String _name = "";
     int _duration = 0;
     var content = TextField(
+      decoration: InputDecoration(
+        labelText: "Quiz Name"
+      ),
       style: GoogleFonts.montserrat(
         color: Color.fromRGBO(105, 105, 108, 1),
         fontSize: 18,
@@ -137,6 +140,9 @@ class _HomePageState extends State<HomePage>{
       }
     );
     var duration = TextField(
+      decoration: InputDecoration(
+        labelText: "Duration (in mins)"
+      ),
       style: GoogleFonts.montserrat(
         color: Color.fromRGBO(105, 105, 108, 1),
         fontSize: 18,
@@ -201,8 +207,8 @@ class _HomePageState extends State<HomePage>{
                     fontSize: 18, 
                     fontWeight: FontWeight.bold
                   )),
-                  Container(child: content, padding: EdgeInsets.all(20),),
-                  Container(child: duration, padding: EdgeInsets.all(20),),
+                  Container(child: content, padding: EdgeInsets.fromLTRB(20, 10, 20, 10),),
+                  Container(child: duration, padding: EdgeInsets.fromLTRB(20, 10, 20, 20),),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [btn, cancelBtn],
